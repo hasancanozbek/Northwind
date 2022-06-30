@@ -3,7 +3,7 @@ using Entities.Abstracts;
 
 namespace Entities.Concretes
 {
-    public interface Product:IEntity
+    public class Product:IEntity
     {
         public int ProductId { get; set; }
         public int CategoryId { get; set; }
