@@ -1,5 +1,6 @@
 ﻿
 using Entities.Concretes;
+using Entities.DTOs;
 using System.Linq.Expressions;
 
 namespace Business.Abstracts
@@ -13,5 +14,6 @@ namespace Business.Abstracts
         void Delete(Product product);
         Product Get(Expression<Func<Product, bool>> filter);
         List<Product> GetAll(Expression<Func<Product, bool>> filter = null);
+        List<ProductDetailDto> GetProductDetails();
     }
 }

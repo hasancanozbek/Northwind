@@ -2,6 +2,7 @@
 
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.DTOs;
 using System.Linq.Expressions;
 
 namespace DataAccess.Concretes.InMemory
@@ -45,6 +46,11 @@ namespace DataAccess.Concretes.InMemory
         public List<Product> GetAllByCategory(int categoryId)
         {
             return _products.FindAll(p => p.CategoryId == categoryId);
+        }
+
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Product entity)

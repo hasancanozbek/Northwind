@@ -1,6 +1,7 @@
 ﻿using Business.Abstracts;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.DTOs;
 using System.Linq.Expressions;
 
 
@@ -43,6 +44,11 @@ namespace Business.Concretes
         public List<Product> GetAllByPrice(decimal min, decimal max)
         {
             return _productRepository.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);
+        }
+
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            return _productRepository.GetProductDetails();
         }
 
         public void Update(Product product)
