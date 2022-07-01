@@ -12,8 +12,8 @@ namespace Business.Abstracts
         void Add(Product product);
         void Update(Product product);
         void Delete(Product product);
-        Product Get(Expression<Func<Product, bool>> filter);
-        List<Product> GetAll(Expression<Func<Product, bool>> filter = null);
+        Product GetById(int id);
+        List<Product> GetAll();
         List<ProductDetailDto> GetProductDetails();
     }
 }

@@ -26,14 +26,14 @@ namespace Business.Concretes
             _productRepository.Delete(product);
         }
 
-        public Product Get(Expression<Func<Product, bool>> filter)
+        public Product GetById(int id)
         {
-            return _productRepository.Get(filter);
+            return _productRepository.Get(p => p.ProductId == id);
         }
 
-        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        public List<Product> GetAll()
         {
-            return _productRepository.GetAll(filter);
+            return _productRepository.GetAll();
         }
 
         public List<Product> GetAllByCategory(int categoryId)

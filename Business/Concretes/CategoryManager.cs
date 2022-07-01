@@ -26,14 +26,14 @@ namespace Business.Concretes
             _categoryRepository.Delete(category);
         }
 
-        public Category Get(Expression<Func<Category, bool>> filter)
+        public Category GetById(int id)
         {
-            return _categoryRepository.Get(filter);
+            return _categoryRepository.Get(c => c.CategoryId == id);
         }
 
-        public List<Category> GetAll(Expression<Func<Category, bool>> filter = null)
+        public List<Category> GetAll()
         {
-            return _categoryRepository.GetAll(filter);
+            return _categoryRepository.GetAll();
         }
 
         public void Update(Category category)
