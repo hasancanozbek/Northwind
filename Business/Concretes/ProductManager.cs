@@ -1,4 +1,6 @@
 ﻿using Business.Abstracts;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using Entities.DTOs;
@@ -16,44 +18,47 @@ namespace Business.Concretes
             _productRepository = productRepository;
         }
 
-        public void Add(Product product)
+        public IResult Add(Product product)
         {
             _productRepository.Add(product);
+            return new SuccessResult(Messages.ProductAdded);
         }
 
-        public void Delete(Product product)
+        public IResult Delete(Product product)
         {
             _productRepository.Delete(product);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
-        public Product GetById(int id)
+        public IDataResult<Product> GetById(int id)
         {
-            return _productRepository.Get(p => p.ProductId == id);
+            return new SuccessDataResult<Product>(_productRepository.Get(p => p.ProductId == id),Messages.ProductGet);
         }
 
-        public List<Product> GetAll()
+        public IDataResult<List<Product>> GetAll()
         {
-            return _productRepository.GetAll();
+            return new SuccessDataResult<List<Product>>(_productRepository.GetAll(),Messages.ProductGet);
         }
 
-        public List<Product> GetAllByCategory(int categoryId)
+        public IDataResult<List<Product>> GetAllByCategory(int categoryId)
         {
-            return _productRepository.GetAll(p => p.CategoryId == categoryId);
+            return new SuccessDataResult<List<Product>>(_productRepository.GetAll(p => p.CategoryId == categoryId),Messages.ProductGet);
         }
 
-        public List<Product> GetAllByPrice(decimal min, decimal max)
+        public IDataResult<List<Product>> GetAllByPrice(decimal min, decimal max)
         {
-            return _productRepository.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);
+            return new SuccessDataResult<List<Product>>(_productRepository.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max),Messages.ProductGet);        
         }
 
-        public List<ProductDetailDto> GetProductDetails()
+        public IDataResult<List<ProductDetailDto>> GetProductDetails()
         {
-            return _productRepository.GetProductDetails();
+            return new SuccessDataResult<List<ProductDetailDto>>(_productRepository.GetProductDetails(),Messages.ProductGet);
         }
 
-        public void Update(Product product)
+        public IResult Update(Product product)
         {
             _productRepository.Update(product);
+            return new SuccessResult(Messages.ProductUpdated);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using Core.Utilities.Results;
 using Entities.Concretes;
 using Entities.DTOs;
 using System.Linq.Expressions;
@@ -7,13 +8,13 @@ namespace Business.Abstracts
 {
     public interface IProductService
     {
-        List<Product> GetAllByCategory(int categoryId);
-        List<Product> GetAllByPrice(decimal min, decimal max);
-        void Add(Product product);
-        void Update(Product product);
-        void Delete(Product product);
-        Product GetById(int id);
-        List<Product> GetAll();
-        List<ProductDetailDto> GetProductDetails();
+        IDataResult<List<Product>> GetAllByCategory(int categoryId);
+        IDataResult<List<Product>> GetAllByPrice(decimal min, decimal max);
+        IResult Add(Product product);
+        IResult Update(Product product);
+        IResult Delete(Product product);
+        IDataResult<Product> GetById(int id);
+        IDataResult<List<Product>> GetAll();
+        IDataResult<List<ProductDetailDto>> GetProductDetails();
     }
 }
